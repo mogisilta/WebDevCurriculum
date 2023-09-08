@@ -1,35 +1,57 @@
 # Quest 00. 형상관리 시스템
 
 ## Introduction
-* git은 2021년 현재 개발 생태계에서 가장 각광받고 있는 버전 관리 시스템입니다. 이번 퀘스트를 통해 git의 기초적인 사용법을 알아볼 예정입니다.
+
+- git은 2021년 현재 개발 생태계에서 가장 각광받고 있는 버전 관리 시스템입니다. 이번 퀘스트를 통해 git의 기초적인 사용법을 알아볼 예정입니다.
 
 ## Topics
-* git
-  * `git clone`, `git add`, `git commit`, `git push`, `git pull`, `git branch`, `git stash` 명령
-  * `.git` 폴더
-* GitHub
+
+- git
+  - `git clone`, `git add`, `git commit`, `git push`, `git pull`, `git branch`, `git stash` 명령
+  - `.git` 폴더
+- GitHub
 
 ## Resources
-* [Resources to learn Git](https://try.github.io)
-* [Learn Git Branching](https://learngitbranching.js.org/?locale=ko)
-* [Inside Git: .Git directory](https://githowto.com/git_internals_git_directory)
+
+- [Resources to learn Git](https://try.github.io)
+- [Learn Git Branching](https://learngitbranching.js.org/?locale=ko)
+- [Inside Git: .Git directory](https://githowto.com/git_internals_git_directory)
 
 ## Checklist
-* 형상관리 시스템은 왜 나오게 되었을까요?
-* git은 어떤 형상관리 시스템이고 어떤 특징을 가지고 있을까요? 분산형 형상관리 시스템이란 무엇일까요?
-  * git은 어떻게 개발되게 되었을까요? git이 분산형 시스템을 채택한 이유는 무엇일까요?
-* git과 GitHub은 어떻게 다를까요?
-* git의 clone/add/commit/push/pull/branch/stash 명령은 무엇이며 어떨 때 이용하나요? 그리고 어떻게 사용하나요?
-* git의 Object, Commit, Head, Branch, Tag는 어떤 개념일까요? git 시스템은 프로젝트의 히스토리를 어떻게 저장할까요?
-* 리모트 git 저장소에 원하지 않는 파일이 올라갔을 때 이를 되돌리려면 어떻게 해야 할까요?
+
+- 형상관리 시스템은 왜 나오게 되었을까요?
+  1. 코드추적의 필요성: 이전 버전 변경사항을 남겨서 코드가 잘못되는 등 상황 발생시, 롤백하여 작업을 진행할 필요가 있었다.
+  2. 효율적인 협업의 필요성: 여러 명이서 협업할 때, 각자의 변경사항을 하나의 파일로 안정적으로, 쉽게 병합할 수 있다.
+- 형상관리 시스템의 발전과정을 간단하게 설명해보세요.
+  1. CVS(Concurrent Versions System)
+  - 종류: 중앙집중식 버전 관리 시스템
+  - 장점: 기존 RCS에서 여러 사용자가 동시 작업을 가능하게 만들었다.
+  - 한계점
+    1. 원자적 커밋 미지원: 여러 파일 Commit 시, 한 파일씩 커밋되어서 중간에 오류 발생 시 일부 파일만 커밋되는 현상발생.
+       > 원자적: 나눌 수 없는, 중간 단계가 없는 수행 혹은 미수행 이분법적인 방식. 원자적 커밋 방식이면 아예 커밋이 되지않거나, 전체가 커밋되거나 둘 중하나이다.<br>또한 커밋 과정 중에는 변경사항이 적용되지 않는다.
+    2. 디렉토리 버전관리 미지원: 파일 구조, 이름 변경 등에 대한 추적이 되지 않음.
+    3. 바이너리 파일관리 비효율: 각 버전별로 변경사항만 관리하는 것이 아니라, 전체 파일들을 저장하는 방식으로 저장공간 비효율 발생.
+  2. SVN(Subversion)
+  - 종류: 중앙집중식 버전 관리 시스템.
+  - 장점: CVS에서
+  3. DVCS(Distributed Version Control Systems / Git, Mercurial, Bazaar): 분산버전관리시스템.
+- git은 어떤 형상관리 시스템이고 어떤 특징을 가지고 있을까요? 분산형 형상관리 시스템이란 무엇일까요?
+
+- git은 어떻게 개발되게 되었을까요?(왜 깃인가?) git이 분산형 시스템을 채택한 이유는 무엇일까요?
+- git과 GitHub은 어떻게 다를까요?
+- git의 clone/add/commit/push/pull/branch/stash 명령은 무엇이며 어떨 때 이용하나요? 그리고 어떻게 사용하나요?
+- git의 Object, Commit, Head, Branch, Tag는 어떤 개념일까요? git 시스템은 프로젝트의 히스토리를 어떻게 저장할까요?
+- 리모트 git 저장소에 원하지 않는 파일이 올라갔을 때 이를 되돌리려면 어떻게 해야 할까요?
 
 ## Quest
-* GitHub에 가입한 뒤, [이 커리큘럼의 GitHub 저장소](https://github.com/KnowRe-Dev/WebDevCurriculum)의 우상단의 Fork 버튼을 눌러 자신의 저장소에 복사해 둡니다.
-* Windows의 경우 같이 설치된 git shell을, MacOSX의 경우 터미널을 실행시켜 커맨드라인에 들어간 뒤, 명령어를 이용하여 복사한 저장소를 clone합니다.
-  * 앞으로의 git 작업은 되도록 커맨드라인을 통해 하는 것을 권장합니다.
-* 이 문서가 있는 폴더 바로 밑에 있는 sandbox 폴더에 파일을 추가한 후 커밋해 보기도 하고, 파일을 삭제해 보기도 하고, 수정해 보기도 하면서 각각의 단계에서 커밋했을 때 어떤 것들이 저장되는지를 확인합니다.
-* `clone`/`add`/`commit`/`push`/`pull`/`branch`/`stash` 명령을 충분히 익혔다고 생각되면, 자신의 저장소에 이력을 push합니다.
+
+- GitHub에 가입한 뒤, [이 커리큘럼의 GitHub 저장소](https://github.com/KnowRe-Dev/WebDevCurriculum)의 우상단의 Fork 버튼을 눌러 자신의 저장소에 복사해 둡니다.
+- Windows의 경우 같이 설치된 git shell을, MacOSX의 경우 터미널을 실행시켜 커맨드라인에 들어간 뒤, 명령어를 이용하여 복사한 저장소를 clone합니다.
+  - 앞으로의 git 작업은 되도록 커맨드라인을 통해 하는 것을 권장합니다.
+- 이 문서가 있는 폴더 바로 밑에 있는 sandbox 폴더에 파일을 추가한 후 커밋해 보기도 하고, 파일을 삭제해 보기도 하고, 수정해 보기도 하면서 각각의 단계에서 커밋했을 때 어떤 것들이 저장되는지를 확인합니다.
+- `clone`/`add`/`commit`/`push`/`pull`/`branch`/`stash` 명령을 충분히 익혔다고 생각되면, 자신의 저장소에 이력을 push합니다.
 
 ## Advanced
-* Mercurial은 어떤 형상관리 시스템일까요? 어떤 장점이 있을까요?
-* 실리콘밸리의 테크 대기업들은 어떤 형상관리 시스템을 쓰고 있을까요?
+
+- Mercurial은 어떤 형상관리 시스템일까요? 어떤 장점이 있을까요?
+- 실리콘밸리의 테크 대기업들은 어떤 형상관리 시스템을 쓰고 있을까요?
