@@ -82,7 +82,7 @@
 
 - git은 어떻게 개발되게 되었을까요? git이 분산형 시스템을 채택한 이유는 무엇일까요?
 
-- git과 GitHub은 어떻게 다를까요?
+- git과 GitHub은 어떻게 다를까요?qweqwe
 
 - git의 clone/add/commit/push/pull/branch/stash 명령은 무엇이며 어떨 때 이용하나요? 그리고 어떻게 사용하나요?
 
